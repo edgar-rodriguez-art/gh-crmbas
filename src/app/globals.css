@@ -1,0 +1,126 @@
+@import "tailwindcss";
+
+/* ---------------------------------------------------------------------------
+   Sistema visual de crmbas
+   Paleta sobria de grises fríos con un azul de acento, pensada para jornadas
+   largas de trabajo con tablas densas.
+--------------------------------------------------------------------------- */
+
+@theme {
+  --color-marca-50:  #eef4ff;
+  --color-marca-100: #dbe6fe;
+  --color-marca-200: #bfd3fe;
+  --color-marca-300: #93b4fd;
+  --color-marca-400: #608cfa;
+  --color-marca-500: #3b66f6;
+  --color-marca-600: #2545eb;
+  --color-marca-700: #1d34d8;
+  --color-marca-800: #1e2daf;
+  --color-marca-900: #1e2d8a;
+
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+}
+
+:root {
+  --fondo: #f6f7f9;
+  --superficie: #ffffff;
+  --borde: #e3e6ec;
+  --texto: #14181f;
+  --texto-suave: #5b6472;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --fondo: #0d1016;
+    --superficie: #151a22;
+    --borde: #262d38;
+    --texto: #e8ebf0;
+    --texto-suave: #98a1b0;
+  }
+}
+
+html, body {
+  background: var(--fondo);
+  color: var(--texto);
+}
+
+body {
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Foco siempre visible: requisito de accesibilidad (UNE-EN 301549, WCAG 2.1 AA). */
+:focus-visible {
+  outline: 2px solid var(--color-marca-500);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+@layer components {
+  .superficie {
+    background: var(--superficie);
+    border: 1px solid var(--borde);
+  }
+
+  .texto-suave {
+    color: var(--texto-suave);
+  }
+
+  .campo {
+    @apply w-full rounded-lg px-3 py-2 text-sm outline-none transition;
+    background: var(--superficie);
+    border: 1px solid var(--borde);
+    color: var(--texto);
+  }
+
+  .campo:focus {
+    border-color: var(--color-marca-500);
+    box-shadow: 0 0 0 3px var(--color-marca-100);
+  }
+
+  .etiqueta-campo {
+    @apply mb-1.5 block text-xs font-medium uppercase tracking-wide;
+    color: var(--texto-suave);
+  }
+
+  .boton,
+  .boton-primario,
+  .boton-secundario {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2
+           text-sm font-medium transition disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  .boton-primario {
+    @apply bg-marca-600 text-white hover:bg-marca-700;
+  }
+
+  .boton-secundario {
+    background: var(--superficie);
+    border: 1px solid var(--borde);
+    color: var(--texto);
+  }
+
+  .boton-secundario:hover {
+    border-color: var(--color-marca-400);
+  }
+
+  .tabla {
+    @apply w-full border-collapse text-sm;
+  }
+
+  .tabla thead th {
+    @apply px-4 py-3 text-left text-xs font-semibold uppercase tracking-wide;
+    color: var(--texto-suave);
+    border-bottom: 1px solid var(--borde);
+  }
+
+  .tabla tbody td {
+    @apply px-4 py-3 align-middle;
+    border-bottom: 1px solid var(--borde);
+  }
+
+  .tabla tbody tr:last-child td {
+    border-bottom: 0;
+  }
+}
