@@ -66,11 +66,11 @@ export default async function PaginaPresupuesto({
                   {lineas.map((l) => (
                     <tr key={l.id}>
                       <td>{l.descripcion}</td>
-                      <td className="text-right tabular-nums">{l.cantidad}</td>
-                      <td className="text-right tabular-nums">{importe(l.precio_unitario)}</td>
-                      <td className="text-right tabular-nums">{porcentaje(l.descuento_pct)}</td>
-                      <td className="text-right tabular-nums">{porcentaje(l.tipo_iva)}</td>
-                      <td className="text-right font-medium tabular-nums">{importe(l.importe)}</td>
+                      <td className="whitespace-nowrap text-right tabular-nums">{l.cantidad}</td>
+                      <td className="whitespace-nowrap text-right tabular-nums">{importe(l.precio_unitario)}</td>
+                      <td className="whitespace-nowrap text-right tabular-nums">{porcentaje(l.descuento_pct)}</td>
+                      <td className="whitespace-nowrap text-right tabular-nums">{porcentaje(l.tipo_iva)}</td>
+                      <td className="whitespace-nowrap text-right font-medium tabular-nums">{importe(l.importe)}</td>
                     </tr>
                   ))}
                 </tbody>
